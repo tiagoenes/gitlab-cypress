@@ -56,7 +56,7 @@ pipeline {
         }
         stage('e2e Tests') {
             steps {
-                sh './node_modules/.bin/cypress run --browser chrome --headless --env url=${TENANT}'
+                sh 'npx cypress run --headless --browser chrome --env url=${TENANT}'
             }
         }
         stage('Deploy') {
