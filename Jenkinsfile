@@ -49,11 +49,11 @@ pipeline {
                 sh 'npm i @cypress/xvfb'
             }
         }
-        stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         sh 'npm run build'
+        //     }
+        // }
         stage('e2e Tests') {
             steps {
                 sh './node_modules/.bin/cypress run --env url=${TENANT}'
