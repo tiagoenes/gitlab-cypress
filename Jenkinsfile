@@ -54,10 +54,12 @@ pipeline {
         //         sh 'npm run ci'
         //     }
         // }
+        wrap([$class: 'Xvfb', ....) {
         stage('e2e Tests') {
             steps {
                 sh 'npx cypress run --browser chrome --headless --env url=${TENANT}'
             }
+        }
         }
         stage('Deploy') {
             steps {
