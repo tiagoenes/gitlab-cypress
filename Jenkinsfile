@@ -49,11 +49,11 @@ pipeline {
                 // sh 'apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb'
             }
         }
-        // stage('Build') {
-        //     steps {
-        //         sh 'npm run build'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
         stage('e2e Tests') {
             steps {
                 sh './node_modules/.bin/cypress run --env url=${TENANT}'
