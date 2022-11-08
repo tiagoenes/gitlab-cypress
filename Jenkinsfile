@@ -51,12 +51,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'npm run build'
+                sh 'npm run ci'
             }
         }
         stage('e2e Tests') {
             steps {
-                sh 'npx cypress run ELECTRON_RUN_AS_NODE=1 --env url=${TENANT}'
+                sh 'npx cypress run --browser chrome --headless --env url=${TENANT}'
             }
         }
         stage('Deploy') {
