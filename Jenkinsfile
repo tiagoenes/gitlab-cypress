@@ -56,7 +56,7 @@ pipeline {
         }
         stage('e2e Tests') {
             steps {
-                sh 'npx cypress run --headless --browser chrome --env url=${TENANT}'
+                sh 'npx cypress run ELECTRON_RUN_AS_NODE=1 --env url=${TENANT}'
             }
         }
         stage('Deploy') {
