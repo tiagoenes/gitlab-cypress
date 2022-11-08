@@ -43,24 +43,24 @@ pipeline {
     //or other stage-specific directives. Practically speaking, all of the real work done by a Pipeline will be wrapped
     //in one or more stage directives.
     stages {
-        
-        stage('Build'){
-            //The steps section defines a series of one or more steps to be executed in a given stage directive.
+        stage('Dependencies') {
             steps {
-                echo "Building the application"
+                sh 'npm i'
             }
         }
-        
-        stage('Testing') {
+        stage('Build') {
             steps {
-                sh "npm i"
-                sh "npx cypress run --env url=${TENANT}"
+                sh 'npm run build'
             }
         }
-        
-        stage('Deploy'){
+        stage('e2e Tests') {
             steps {
-                echo "Deploying"
+                sh 'npx cypress run --headless --env url=${TENANT}'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
