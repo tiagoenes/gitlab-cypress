@@ -1,7 +1,7 @@
 export const loginTest = () => {
   describe('login', () => {
     it('passes', () => {
-      cy.visit('https://prisma-it.tst.prisma-it.com/usermanager:authentication/login')
+      cy.visit(Cypress.env('url'))
     })
     it('should have teo inputs', () => {
       cy.get('#emailaddress').should('be.visible')
@@ -11,9 +11,9 @@ export const loginTest = () => {
       cy.get('#userformsubmit').should('be.visible')
     });
     it('should be able to login', () => {
-      cy.get('#emailaddress').type('bla@prisma-it.com')
-      cy.get('#password').type('bla')
-      // cy.get('#userformsubmit').click()
+      cy.get('#emailaddress').type(Cypress.env('user'))
+      cy.get('#password').type(Cypress.env('userPassword'))
+      cy.get('#userformsubmit').click()
       Cypress.on('uncaught:exception', (err, runnable) => {
         // returning false here prevents Cypress from
         // failing the test
