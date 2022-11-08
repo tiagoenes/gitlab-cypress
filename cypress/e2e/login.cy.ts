@@ -1,7 +1,7 @@
 export const loginTest = () => {
   describe('login', () => {
     it('passes', () => {
-      cy.visit(Cypress.env('url'))
+      cy.visit('https://prisma-it.tst.prisma-it.com')
     })
     it('should have teo inputs', () => {
       cy.get('#emailaddress').should('be.visible')
