@@ -46,6 +46,7 @@ pipeline {
         stage('Dependencies') {
             steps {
                 sh 'npm i'
+                sh 'npm i @cypress/xvfb'
             }
         }
         stage('Build') {
