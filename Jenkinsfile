@@ -51,8 +51,8 @@ pipeline {
         
         stage('Testing') {
             steps {
-                bat "npm i"
-                bat "npx cypress run --env url=${TENANT}"
+                sh "npm i"
+                sh "npx cypress run --env url=${TENANT}"
             }
         }
         
